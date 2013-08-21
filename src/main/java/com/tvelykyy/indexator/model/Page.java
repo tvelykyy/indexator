@@ -2,28 +2,28 @@ package com.tvelykyy.indexator.model;
 
 public class Page {
 
-    protected int id;
+    protected Integer id;
     protected String url;
     protected String title;
 
     public Page() {
     }
 
-    public Page(int id) {
+    public Page(Integer id) {
         this.id = id;
     }
 
-    public Page(int id, String url, String title) {
+    public Page(Integer id, String url, String title) {
         this.id = id;
         this.url = url;
         this.title = title;
     }
 
-    public int getId() {
+    public Integer getId() {
         return id;
     }
 
-    public void setId(int id) {
+    public void setId(Integer id) {
         this.id = id;
     }
 
