@@ -10,7 +10,7 @@ Target Server Type    : MYSQL
 Target Server Version : 50532
 File Encoding         : 65001
 
-Date: 2013-08-21 19:13:26
+Date: 2013-08-29 17:50:32
 */
 
 SET FOREIGN_KEY_CHECKS=0;
@@ -27,17 +27,16 @@ CREATE TABLE `page` (
   UNIQUE KEY `id_UNIQUE` (`id`),
   UNIQUE KEY `url_UNIQUE` (`url`),
   KEY `fk_page_id` (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=14 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=18 DEFAULT CHARSET=utf8;
 
 -- ----------------------------
--- Table structure for unindexed_page
+-- Table structure for page_index_log
 -- ----------------------------
-DROP TABLE IF EXISTS `unindexed_page`;
-CREATE TABLE `unindexed_page` (
+DROP TABLE IF EXISTS `page_index_log`;
+CREATE TABLE `page_index_log` (
   `page_id` int(11) NOT NULL,
-  `unindexed_in_days` int(11) unsigned NOT NULL,
-  PRIMARY KEY (`page_id`),
-  UNIQUE KEY `page_id_UNIQUE` (`page_id`),
-  KEY `fk_page_id` (`page_id`),
-  CONSTRAINT `fk_page_id` FOREIGN KEY (`page_id`) REFERENCES `page` (`id`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+  `indexed` tinyint(1) unsigned NOT NULL,
+  `date` date NOT NULL,
+  KEY `fk_page_id` (`page_id`) USING BTREE,
+  CONSTRAINT `page_index_log_ibfk_1` FOREIGN KEY (`page_id`) REFERENCES `page` (`id`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 ROW_FORMAT=COMPACT;

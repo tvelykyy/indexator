@@ -1,10 +1,15 @@
 package com.tvelykyy.indexator.model;
 
+import java.util.ArrayList;
+import java.util.List;
+
 public class Page {
 
-    protected Integer id;
-    protected String url;
-    protected String title;
+    private Integer id;
+    private String url;
+    private String title;
+
+    private List<IndexState> indexLog = new ArrayList <IndexState>();
 
     public Page() {
     }
@@ -41,6 +46,23 @@ public class Page {
 
     public void setTitle(String title) {
         this.title = title;
+    }
+
+    public List<IndexState> getIndexLog() {
+        return indexLog;
+    }
+
+    public void setIndexLog(List<IndexState> indexLog) {
+        this.indexLog = indexLog;
+    }
+
+    public void addIndexState(IndexState state) {
+        this.indexLog.add(state);
+    }
+
+    public IndexState getLastIndexState() {
+        int lastElementIndex = this.indexLog.size() - 1;
+        return this.indexLog.get(lastElementIndex);
     }
 
 }

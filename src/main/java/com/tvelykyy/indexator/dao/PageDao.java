@@ -1,12 +1,12 @@
 package com.tvelykyy.indexator.dao;
 
+import com.tvelykyy.indexator.model.IndexState;
 import com.tvelykyy.indexator.model.Page;
-import com.tvelykyy.indexator.model.UnindexedPage;
 
 public interface PageDao {
 
-    int insertPage(Page page);
+    int createPage(Page page);
 
-    int insertUnindexedPage(UnindexedPage unindexedPage);
+    void addIndexState(Page page, IndexState state);
 
 }

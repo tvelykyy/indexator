@@ -18,4 +18,8 @@
         <setting name="jdbcTypeForNull" value="OTHER"/>
         <setting name="lazyLoadTriggerMethods" value="equals,clone,hashCode,toString"/>
     </settings>
+
+    <typeHandlers>
+        <typeHandler handler="com.tvelykyy.indexator.mybatis.typehandler.LocalDateTypeHandler"/>
+    </typeHandlers>
 </configuration>

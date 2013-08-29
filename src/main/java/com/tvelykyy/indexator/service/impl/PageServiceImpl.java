@@ -1,8 +1,10 @@
 package com.tvelykyy.indexator.service.impl;
 
 import com.tvelykyy.indexator.dao.PageDao;
-import com.tvelykyy.indexator.model.UnindexedPage;
+import com.tvelykyy.indexator.model.IndexState;
+import com.tvelykyy.indexator.model.Page;
 import com.tvelykyy.indexator.service.PageService;
+import org.joda.time.LocalDate;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
@@ -15,13 +17,12 @@ public class PageServiceImpl implements PageService {
 
     @Override
     @Transactional
-    public void createNotIndexedPage(UnindexedPage unindexedPage) {
-        UnindexedPage page = new UnindexedPage();
-        page.setTitle("Title");
-        page.setUrl("http://google.com" + Math.random());
-        page.setUnindexedInDays(15);
+    public void createNotIndexedPage(Page page) {
+        Page testPage = new Page();
+        testPage.setTitle("Bla-Bla");
+        testPage.setUrl("http://tvelykyy.com" + Math.random());
+        pageDao.createPage(testPage);
+        pageDao.addIndexState(testPage, new IndexState(false, new LocalDate()));
 
-        pageDao.insertPage(page);
-        pageDao.insertUnindexedPage(page);
     }
 }
