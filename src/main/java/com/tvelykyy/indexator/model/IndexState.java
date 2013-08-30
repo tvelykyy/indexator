@@ -7,7 +7,15 @@ public class IndexState {
     private boolean indexed;
     private LocalDate date;
 
-    public IndexState(boolean indexed, LocalDate date) {
+    public static IndexState getFalseIndexStateForDate(LocalDate date) {
+        return new IndexState(false, date);
+    }
+
+    public static IndexState getTrueIndexStateForDate(LocalDate date) {
+        return new IndexState(true, date);
+    }
+
+    private IndexState(boolean indexed, LocalDate date) {
         this.indexed = indexed;
         this.date = date;
     }

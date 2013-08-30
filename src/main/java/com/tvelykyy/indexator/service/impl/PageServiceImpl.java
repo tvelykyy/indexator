@@ -22,7 +22,7 @@ public class PageServiceImpl implements PageService {
         testPage.setTitle("Bla-Bla");
         testPage.setUrl("http://tvelykyy.com" + Math.random());
         pageDao.createPage(testPage);
-        pageDao.addIndexState(testPage, new IndexState(false, new LocalDate()));
+        pageDao.addIndexState(testPage, IndexState.getFalseIndexStateForDate(new LocalDate()));
 
     }
 }
