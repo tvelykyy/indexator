@@ -18,11 +18,7 @@ public class PageServiceImpl implements PageService {
     @Override
     @Transactional
     public void createNotIndexedPage(Page page) {
-        Page testPage = new Page();
-        testPage.setTitle("Bla-Bla");
-        testPage.setUrl("http://tvelykyy.com" + Math.random());
-        pageDao.createPage(testPage);
-        pageDao.addIndexState(testPage, IndexState.getFalseIndexStateForDate(new LocalDate()));
-
+        pageDao.createPage(page);
+        pageDao.addIndexState(page, IndexState.getFalseIndexStateForDate(new LocalDate()));
     }
 }

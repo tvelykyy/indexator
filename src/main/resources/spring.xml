@@ -17,8 +17,11 @@
     <tx:annotation-driven transaction-manager="txManager"/>
 
     <bean class="org.springframework.beans.factory.config.PropertyPlaceholderConfigurer">
-        <property name="location">
-            <value>classpath:database.properties</value>
+        <property name="locations">
+            <list>
+                <value>classpath:database.properties</value>
+                <value>classpath:gogetlinks.properties</value>
+            </list>
         </property>
     </bean>
 

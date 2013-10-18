@@ -11,6 +11,7 @@ import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.firefox.FirefoxDriver;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Component;
 
 import java.util.List;
@@ -23,20 +24,24 @@ public class Bot {
     @Autowired
     PageService pageService;
 
+    @Value("${gogetlinks.username}")
+    private String gogetlinksUsername;
+
+    @Value("${gogetlinks.password}")
+    private String gogetlinksPassword;
+
     private static WebDriver driver = new FirefoxDriver();
 
     public void getNotIndexedPagesFromGgl() {
         driver.get("http://gogetlinks.net/");
         WebElement usernameField = driver.findElement(By.id("login_e_mail"));
-        usernameField.sendKeys("yashpotyuk@gmail.com");
+        usernameField.sendKeys(this.gogetlinksUsername);
 
         WebElement passwordField = driver.findElement(By.id("login_password"));
-        passwordField.sendKeys("Virus003&");
+        passwordField.sendKeys(this.gogetlinksPassword);
 
         WebElement submitButton = driver.findElement(By.id("ok_button"));
         submitButton.submit();
-
-
 
         Cookie ck = new Cookie("in_page", "1000");
         driver.manage().addCookie(ck);
