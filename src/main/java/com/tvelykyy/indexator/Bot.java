@@ -1,6 +1,5 @@
 package com.tvelykyy.indexator;
 
-import com.thoughtworks.selenium.Selenium;
 import com.tvelykyy.indexator.model.IndexState;
 import com.tvelykyy.indexator.model.Page;
 import com.tvelykyy.indexator.service.PageService;
@@ -50,7 +49,6 @@ public class Bot {
 
         List<WebElement> articles = driver.findElements(By.cssSelector("tr[id^='col_row']"));
 
-        LocalDate currentDate = new LocalDate();
         for (WebElement article : articles) {
             WebElement labelElement = article.findElement(By.xpath(".//label[@onmouseout and @onmouseover]"));
             WebElement urlElement = article.findElement(By.xpath(".//a[@onmouseout and @onmouseover]"));
@@ -69,6 +67,7 @@ public class Bot {
             Page page = new Page();
             page.setUrl(url);
             page.setTitle("No Title");
+            page.getIndexLog().add(indexState);
 
             pageService.createNotIndexedPage(page);
         }
