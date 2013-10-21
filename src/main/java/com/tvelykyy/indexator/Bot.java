@@ -73,5 +73,7 @@ public class Bot {
             pageService.createNotIndexedPage(page);
         }
 
+        driver.close();
+
     }
 }
